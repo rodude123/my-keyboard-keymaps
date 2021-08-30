@@ -1,10 +1,15 @@
 #include QMK_KEYBOARD_H
+#include "sendstring_uk.h"
+#include "keymap_uk.h"
 
 enum custom_keycodes 
 {
     KC_DBL0 = SAFE_RANGE,
     KC_YELLOW,
     KC_GREEN,
+    KC_GMAIL,
+    KC_HMAIL,
+    KC_UNI
 };
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record)
@@ -51,6 +56,42 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record)
             }
             break;
 
+        case KC_GMAIL:
+            if (record->event.pressed)
+            {
+                // when keycode KC_GMAIL is pressed
+                SEND_STRING("rodude123@gmail.com");
+            }
+            else
+            {
+                // when keycode KC_GMAIL is released
+            }
+            break;
+
+        case KC_HMAIL:
+            if (record->event.pressed)
+            {
+                // when keycode KC_HMAIL is pressed
+                SEND_STRING("rohitpai@hotmail.co.uk");
+            }
+            else
+            {
+                // when keycode KC_HMAIL is released
+            }
+            break;
+
+        case KC_UNI:
+            if (record->event.pressed)
+            {
+                // when keycode KC_UNI is pressed
+                SEND_STRING("rap33@sussex.ac.uk");
+            }
+            else
+            {
+                // when keycode KC_UNI is released
+            }
+            break;
+
     }
     return true;
 };
@@ -92,7 +133,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_LSFT, KC_NUBS, KC_Z, KC_X, KC_C, KC_V, KC_B, KC_N, KC_P0, KC_DBL0, KC_PDOT, KC_PPLS, KC_RSFT, KC_UP, KC_END, 
         KC_LCTL, KC_LGUI, KC_LALT, KC_SPC, MO(2), KC_NLCK, KC_RCTL, KC_LEFT, KC_DOWN, KC_RGHT),
     [2] = LAYOUT(
-        KC_ESC, KC_F1, KC_F2, KC_F3, KC_F4, KC_F5, KC_F6, KC_F7, KC_F8, KC_F9, KC_F10, KC_F11, KC_F12, KC_TRNS, KC_MPLY, 
+        KC_ESC, KC_F1, KC_F2, KC_F3, KC_F4, KC_F5, KC_F6, KC_F7, KC_F8, KC_GMAIL, KC_HMAIL, KC_UNI, KC_F12, KC_TRNS, KC_MPLY, 
         KC_GRV, TG(0), TG(1), KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_BSPC, KC_PSCR,
         KC_TAB, BL_TOGG, BL_ON, KC_TRNS, KC_TRNS, RGB_HUI, KC_TRNS, KC_TRNS, KC_TRNS, RGB_HUI, RGB_SAI, RGB_VAI, KC_TRNS, KC_DEL,
         KC_CAPS, RGB_TOG, KC_YELLOW, KC_GREEN, KC_TRNS, KC_MYCM, KC_MAIL, KC_CALC, KC_TRNS, RGB_HUD, RGB_SAD, RGB_VAD, RESET, KC_ENT, KC_HOME,
