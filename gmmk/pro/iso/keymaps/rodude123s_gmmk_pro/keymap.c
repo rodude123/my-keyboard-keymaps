@@ -62,7 +62,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record)
             if (record->event.pressed)
             {
                 // when keycode KC_GMAIL is pressed
-                SEND_STRING("rodude123@gmail.com");
+                SEND_STRING("xxxxxxxxxxxxxxx");
             }
             else
             {
@@ -74,7 +74,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record)
             if (record->event.pressed)
             {
                 // when keycode KC_HMAIL is pressed
-                SEND_STRING("rohitpai@hotmail.co.uk");
+                SEND_STRING("xxxxxxxxxxxxx");
             }
             else
             {
@@ -86,7 +86,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record)
             if (record->event.pressed)
             {
                 // when keycode KC_UNI is pressed
-                SEND_STRING("rap33@sussex.ac.uk");
+                SEND_STRING("xxxxxxxxxxxxxx");
             }
             else
             {
@@ -97,7 +97,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record)
 	    if(record->event.pressed)
             {
 		// when keycode KC_PHN is pressed
-		SEND_STRING("07449063029");
+		SEND_STRING("xxxxxxxxxxxxxx");
 	    }
             else
             {
