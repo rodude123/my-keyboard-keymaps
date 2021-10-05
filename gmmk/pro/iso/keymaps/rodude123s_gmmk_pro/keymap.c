@@ -9,7 +9,8 @@ enum custom_keycodes
     KC_GREEN,
     KC_GMAIL,
     KC_HMAIL,
-    KC_UNI
+    KC_UNI,
+    KC_PHN
 };
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record)
@@ -92,6 +93,17 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record)
                 // when keycode KC_UNI is released
             }
             break;
+        case KC_PHN:
+	    if(record->event.pressed)
+            {
+		// when keycode KC_PHN is pressed
+		SEND_STRING("07449063029");
+	    }
+            else
+            {
+                // when keycode KC_PHN is released
+            }
+            break;
     }
     return true;
 };
@@ -119,13 +131,13 @@ void rgb_matrix_indicators_advanced_user(uint8_t led_min, uint8_t led_max) {
     if (layer_state_is(1))
     {
 	RGB prevColour = hsv_to_rgb(rgb_matrix_get_hsv());
-	RGB_MATRIX_INDICATOR_SET_COLOR(70,  128 - prevColour.r, 128 - prevColour.g, 128 - prevColour.b);
+	RGB_MATRIX_INDICATOR_SET_COLOR(70,  255 - prevColour.r, 192 - prevColour.g, 128 - prevColour.b);
     }
 
     if (layer_state_is(2))
     {
 	RGB prevColour = hsv_to_rgb(rgb_matrix_get_hsv());
-	RGB_MATRIX_INDICATOR_SET_COLOR(19,  128 - prevColour.r, 128 - prevColour.g, 128 - prevColour.b);
+	RGB_MATRIX_INDICATOR_SET_COLOR(19,  255 - prevColour.r, 192 - prevColour.g, 128 - prevColour.b);
     } 
 }
 
@@ -166,12 +178,12 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_LSFT, KC_NUBS, KC_Z, KC_X, KC_C, KC_V, KC_P0, KC_P1, KC_P2, KC_3, KC_PDOT, KC_SLSH, KC_RSFT, KC_UP, KC_END, 
         KC_LCTL, KC_LGUI, KC_LALT, KC_SPC, MO(2), KC_NLCK, KC_RCTL, KC_LEFT, KC_DOWN, KC_RGHT),
     [2] = LAYOUT(
-        KC_ESC, KC_F1, KC_F2, KC_F3, KC_F4, KC_F5, KC_F6, KC_F7, KC_F8, KC_GMAIL, KC_HMAIL, KC_UNI, KC_F12, KC_TRNS, KC_MPLY, 
+        KC_ESC, KC_F1, KC_F2, KC_F3, KC_F4, KC_F5, KC_F6, KC_F7, KC_F8, KC_GMAIL, KC_HMAIL, KC_UNI, KC_PHN, KC_TRNS, KC_MPLY, 
         KC_GRV, TG(0), TG(1), KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_BSPC, KC_PSCR,
         KC_TAB, BL_TOGG, BL_ON, KC_TRNS, KC_TRNS, KC_INS, KC_PGUP, KC_PGDN, KC_TRNS, RGB_HUI, RGB_SAI, RGB_VAI, KC_TRNS, KC_DEL,
         KC_CAPS, RGB_TOG, KC_YELLOW, KC_GREEN, KC_TRNS, KC_MYCM, KC_MAIL, KC_CALC, KC_TRNS, RGB_HUD, RGB_SAD, RGB_VAD, RESET, KC_ENT, KC_HOME,
-        KC_LSFT, KC_TRNS, KC_MPRV, KC_MNXT, KC_MSEL, KC_TRNS, KC_BRIU, KC_BRID, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_RSFT, KC_UP, KC_END, 
-        KC_LCTL, KC_LGUI, KC_LALT, KC_SPC, KC_TRNS, KC_TRNS, KC_TRNS, KC_LEFT, KC_DOWN, KC_RGHT)
+        KC_LSFT, KC_TRNS, KC_MPRV, KC_MNXT, KC_MSEL, KC_TRNS, KC_BRIU, KC_BRID, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_RSFT, RGB_MOD, KC_END, 
+        KC_LCTL, KC_LGUI, KC_LALT, KC_SPC, KC_TRNS, KC_TRNS, KC_TRNS, RGB_SPI, RGB_RMOD, RGB_SPD)
 
 
 };
